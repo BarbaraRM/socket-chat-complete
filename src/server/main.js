@@ -6,12 +6,12 @@ const socket = require('socket.io')
 const app = express()
 const server = http.createServer(app)
 const io = socket(server)
-
-app.set('port', process.env.PROT || 3000)
+var port = process.env.PROT || 3000
+//app.set('port', process.env.PROT || 3000)
 app.use(express.static(path.join(__dirname, '../public')))
 
 require('./socket')(io)
 
-server.listen(app.get('port'), () => {
+server.listen(port, () => {
   console.log('Server on localhost:3000')
 })
